@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	 <meta charset="UTF-8">
+     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+          <link rel="stylesheet" type="text/css" href="pdstyle.css">
+</head>
+<body>
+
+
+<form id="smt" method=Post action="/pdphp.php">
+<label>English input: 	</label>
+</br>
+<textarea id="inp" rows="4" cols="50" name="comment" form="smt"></textarea>
+</br>
+<input type="submit" value="Submit">
+</form>
+
+
+<div id="result">
+</div>
+<script type="text/javascript">
+
+$("#smt").submit(function(event) {
+
+      
+      event.preventDefault();
+
+     
+      var $form = $( this ),
+      url = $form.attr( 'action' );
+       
+
+
+      $.post( url, { input:$('#inp').val() },
+      function(data)
+      {
+         $('#result').html(data);
+      }
+      );
+
+      
+    });
+</script>
+
+</body>
+</html>
